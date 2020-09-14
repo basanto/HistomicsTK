@@ -23,13 +23,10 @@ RUN apt-get update && \
     apt-get autoremove && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN apt-get update && \
-    apt-get -y install sudo
-
 RUN apt-get update && apt-get install -y libgl1-mesa-glx
 RUN apt-get update && \
-    sudo DEBIAN_FRONTEND=noninteractive apt-get --yes --no-install-recommends -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" dist-upgrade && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+    DEBIAN_FRONTEND=noninteractive apt-get --yes --no-install-recommends -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" --yes dist-upgrade && \
+    DEBIAN_FRONTEND=noninteractive apt-get install --yes --no-install-recommends \
     git \
     wget \
     python-qt4 \
