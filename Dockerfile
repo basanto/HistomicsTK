@@ -25,7 +25,7 @@ RUN apt-get update && \
 
 RUN apt-get update && apt-get install -y libgl1-mesa-glx
 RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get --yes --no-install-recommends -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" --force-yes -fuy dist-upgrade && \
+    DEBIAN_FRONTEND=noninteractive apt-get -yq --no-install-recommends -yq -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" --force-yes -fuy dist-upgrade && \
     DEBIAN_FRONTEND=noninteractive apt-get install --yes --no-install-recommends \
     git \
     wget \
