@@ -127,8 +127,8 @@ WSI_medulla_mask = np.array(WSI_medulla_mask)
 xml_counter = open(xml_counter,'w')
 xml_contour = open(xml_contour,'w')
 
-xml_counter.write('<Annotations>\n\t<Annotation Id="1">\n\t\t<Attributes>\n\t\t\t<Attribute Name = "Pod">\n\t\t</Attributes>\n\t\t<Regions>')
-xml_contour.write('<Annotations>\n\t<Annotation Id="1">\n\t\t<Attributes>\n\t\t\t<Attribute Name = "Pod">\n\t\t</Attributes>\n\t\t<Regions>')
+xml_counter.write('<Annotations>\n\t<Annotation Id="1">\n\t\t<Attributes>\n\t\t\t<Attribute Id="0" Name="Glom" Value="" />\n\t\t</Attributes>\n\t\t<Regions>')
+xml_contour.write('<Annotations>\n\t<Annotation Id="1">\n\t\t<Attributes>\n\t\t\t<Attribute Id="0" Name="Glom" Value="" />\n\t\t</Attributes>\n\t\t<Regions>')
 
 count = 0
 
