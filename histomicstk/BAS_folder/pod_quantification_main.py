@@ -112,12 +112,12 @@ WSI_downsample = get_wsi_mask(WSI_downsample[:,:,0:3])
 
 #get whole-slide glom mask
 #WSI_glom_xml = [INPUT GLOM XML NAME]
-WSI_glom_mask = xml_to_mask(WSI_glom_xml, (0,0), (WSI_cols,WSI_rows), downsample_factor=downsample_factor, verbose=0)
+WSI_glom_mask = xml_to_mask.xml_to_mask(WSI_glom_xml, (0,0), (WSI_cols,WSI_rows), downsample_factor=downsample_factor, verbose=0)
 WSI_glom_mask = np.array(WSI_glom_mask)
 
 #get whole-slide medulla mask
 #WSI_medulla_xml = [INPUT MEDULLA XML NAME]
-WSI_medulla_mask = xml_to_mask(WSI_medulla_xml, (0,0), (WSI_cols,WSI_rows), downsample_factor=16, verbose=0)
+WSI_medulla_mask = xml_to_mask.xml_to_mask(WSI_medulla_xml, (0,0), (WSI_cols,WSI_rows), downsample_factor=16, verbose=0)
 WSI_medulla_mask = np.array(WSI_medulla_mask)
 
 #xml files - initiation
@@ -134,10 +134,10 @@ count = 0
 
 #get ROI coordinates
 print('Step 1: Glomerulus localization and quantification')
-bbs, total_gloms, glom_feat_labels, glom_feat_qty, glom_feat_array = get_glom_props(WSI_glom_mask,WSI_downsample,WSI_medulla_mask,num_sections,dist_mpp,area_mpp2,df2)
+bbs, total_gloms, glom_feat_labels, glom_feat_qty, glom_feat_array = get_glom_props.get_glom_props(WSI_glom_mask,WSI_downsample,WSI_medulla_mask,num_sections,dist_mpp,area_mpp2,df2)
 
 #define pod feature spaces
-pod_feat_labels, pod_feat_qty, pod_feat_array = get_pod_feat_spaces(total_gloms)
+pod_feat_labels, pod_feat_qty, pod_feat_array = get_pod_feat_spaces.get_pod_feat_spaces(total_gloms)
 
 print('Step 2: Podocyte detection and quantification')
 for bb in range(len(bbs)):
@@ -159,7 +159,7 @@ for bb in range(len(bbs)):
 #    plt.imshow(glom_mask)
 #    plt.show()
     
-    xml_counter, xml_contour, count, pod_feat_vector = get_pod_props(ROI,glom_mask,slider,ihc_gauss_sd,x_start,y_start,xml_counter,xml_contour,count,dist_mpp,area_mpp2)
+    xml_counter, xml_contour, count, pod_feat_vector = get_pod_props.get_pod_props(ROI,glom_mask,slider,ihc_gauss_sd,x_start,y_start,xml_counter,xml_contour,count,dist_mpp,area_mpp2)
     pod_feat_array[:,bb_iter] = pod_feat_vector
 
 #xml files - finalization
