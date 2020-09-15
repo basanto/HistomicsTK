@@ -2,10 +2,16 @@
 Created on Fri Sept 4 11:40:33 2020
 @author: Briana Santo
 """
+
 import numpy as np
 import skimage as sk
 import scipy as sp
 import pandas as pd
+
+import sys
+sys.path.append("..")
+
+import os.path
 #import matplotlib.pyplot as plt
 import cv2
 #import glob
