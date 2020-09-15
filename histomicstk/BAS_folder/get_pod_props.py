@@ -168,7 +168,7 @@ def get_pod_props(ROI,glom_mask,slider,ihc_gauss_sd,x_start,y_start,xml_counter,
             xml_Y = str(round(centroid[0][0]+x_start))
             xml_X = str(round(centroid[1][0]+y_start))
 
-            xml_counter.write('\n\t\t\t<Region Id="' + xml_regionID + '" Type="5">\n\t\t\t\t<Vertices>\n\t\t\t\t\t<Vertex X="' + xml_X + '" Y="' + xml_Y + '" Z="0">\n\t\t\t\t</Vertices>\n\t\t\t</Region>')
+            xml_counter.write('\n\t\t\t<Region Id="' + xml_regionID + '" Type="5">\n\t\t\t\t<Vertices>\n\t\t\t\t\t<Vertex X="' + xml_X + '" Y="' + xml_Y + '" Z="0" />\n\t\t\t\t</Vertices>\n\t\t\t</Region>')
 
         #contours
         for pod in range(podocyte_count+1):
