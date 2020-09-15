@@ -2,6 +2,9 @@
 Created on Fri Sept 4 11:40:33 2020
 @author: Briana Santo
 """
+from __future__ import absolute_import
+from __future__ import division
+from __future__ import print_function
 
 import numpy as np
 import skimage as sk
