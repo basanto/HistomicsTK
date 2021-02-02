@@ -3,6 +3,14 @@
     "type"    : "python"
   },
    
+  "PodoCount_human_analysis": {
+    "type"    : "python"
+  },
+  
+  "PodoCount_mouse_analysis": {
+    "type"    : "python"
+  },
+  
   "TranslateXMLToJson": {
     "type"    : "python"
   }
