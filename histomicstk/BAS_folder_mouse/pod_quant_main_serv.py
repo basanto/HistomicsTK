@@ -152,7 +152,7 @@ for WSI in range(1,2):
     final_feat_array = np.vstack([glom_feat_array.T,pod_feat_array])
     final_feat_labels = glom_feat_labels + pod_feat_labels
     final_feat_DF = pd.DataFrame(final_feat_array,index=final_feat_labels)
-    csv_path = WSI_name + '_Features.csv'
+    #csv_path = WSI_name + '_Features.csv'
     final_feat_DF.to_csv(csv_path,index=True,columns=None)
 
     print('--- Completed: '+str(WSI_name)+' ---\n')
