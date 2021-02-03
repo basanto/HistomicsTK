@@ -108,8 +108,9 @@ for WSI in range(1,2):
     WSI_downsample = get_wsi_mask(WSI_downsample[:,:,0:3],WSI_glom_mask,num_sections)
 
     #xml files - initiation
-    xml_counter = WSI_name +'_counter.xml'
-    xml_contour = WSI_name + '_contour.xml'
+    #xml_counter = WSI_name +'_counter.xml'
+    #xml_contour = WSI_name + '_contour.xml'
+    
 
     xml_counter = open(xml_counter,'w')
     xml_contour = open(xml_contour,'w')
