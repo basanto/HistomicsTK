@@ -8,25 +8,25 @@ import skimage as sk
 import scipy as sp
 import cv2
 from skimage import color
-import matplotlib.pyplot as mplp
+from skimage.transform import resize
 
-def get_wsi_mask(image,wsi_glom_mask,num_sections):
+def get_wsi_mask(image,wsi_glom_mask):
     wsi_mask = color.rgb2gray(image)
     wsi_mask = wsi_mask<(wsi_mask.mean())
     wsi_mask = sp.ndimage.morphology.binary_fill_holes(wsi_mask)
-    wsi_mask = np.logical_and(wsi_mask,(np.invert(wsi_mask)))
+    wsi_mask = (resize(wsi_mask,wsi_glom_mask.shape,anti_aliasing=True)>0.01)*1
+    wsi_mask = np.logical_and(wsi_mask,(1-wsi_glom_mask))
     wsi_labels, num_labels = sp.ndimage.label(wsi_mask)
     wsi_props = sk.measure.regionprops(wsi_labels)
     euler_labels = np.empty([num_labels,2])
-    areas_labels = np.empty([num_labels,2])
     for label in range(num_labels):
         euler_labels[label,0] = wsi_props[label].euler_number
         euler_labels[label,1] = (label+1)
-        areas_labels[label,0] = wsi_props[label].area
-        areas_labels[label,1] = (label+1)
     keep = np.where(euler_labels<0)[0]
-    keep = areas_labels[keep,:]
-    wsi_mask = np.zeros(wsi_mask.shape)
-    wsi_mask[wsi_labels==(keep[:,1])] = 1
+    keep = keep.reshape(len(keep),1)
+    wsi_mask = np.zeros(wsi_labels.shape)
+    for val in range(len(keep)):
+        label = keep[val,0] + 1
+        wsi_mask[wsi_labels==label] = 1
     wsi_mask = sp.ndimage.morphology.binary_fill_holes(wsi_mask)
     return(wsi_mask)
