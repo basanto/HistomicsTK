@@ -8,12 +8,6 @@ import skimage as sk
 import scipy as sp
 import cv2
 
-def get_boundary(image):
-    boundary_pts,_ = cv2.findContours(np.uint8(image), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-    boundary_pts = np.vstack(boundary_pts)
-    boundary_pts = boundary_pts.reshape(len(boundary_pts),2)
-    return boundary_pts
-
 ###GLOM FEATURE ENGINEERING AND EXTRACTION###
 def get_glom_props(glom_image,tissue_image,num_sections,dist_mpp,area_mpp2,df2):
     if num_sections >1:
